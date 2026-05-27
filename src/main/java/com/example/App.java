@@ -5,3 +5,4 @@ public class App {
         System.out.println("Maven project is running successfully!");
     }
 }
+//added
