@@ -16,7 +16,12 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 git branch: 'main',
-                url: 'https://github.com/NaivedyaSahay/Snake-Game.git'
+                url: 'stage('Clone Repository') {
+    steps {
+        git branch: 'main',
+        url: 'https://github.com/cser-naivedya-raj/Snake-Game.git'
+    }
+}'
             }
         }
 
