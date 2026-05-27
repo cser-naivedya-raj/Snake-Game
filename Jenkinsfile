@@ -1,10 +1,6 @@
+Jenkinsfile
 pipeline {
     agent any
-
-    tools {
-        jdk 'JDK17'
-        maven 'Maven3'
-    }
 
     environment {
         IMAGE_NAME = "snake-game"
@@ -13,9 +9,9 @@ pipeline {
 
     stages {
 
-        stage('Build Maven Project') {
+        stage('Clone Repository') {
             steps {
-                bat 'mvn clean package'
+                git 'https://github.com/cser-naivedya-raj/Snake-Game'
             }
         }
 
@@ -27,13 +23,13 @@ pipeline {
 
         stage('Remove Old Container') {
             steps {
-                bat 'docker rm -f %CONTAINER_NAME% || ver > nul'
+                bat 'docker rm -f %CONTAINER_NAME% || exit 0'    
             }
         }
 
         stage('Run Container') {
             steps {
-                bat 'docker run -d -p 8081:8080 --name %CONTAINER_NAME% %IMAGE_NAME%'
+                bat 'docker run -d --name %CONTAINER_NAME% %IMAGE_NAME%'
             }
         }
     }
