@@ -13,18 +13,6 @@ pipeline {
 
     stages {
 
-        stage('Clone Repository') {
-            steps {
-                git branch: 'main',
-                url: 'stage('Clone Repository') {
-    steps {
-        git branch: 'main',
-        url: 'https://github.com/cser-naivedya-raj/Snake-Game.git'
-    }
-}'
-            }
-        }
-
         stage('Build Maven Project') {
             steps {
                 bat 'mvn clean package'
